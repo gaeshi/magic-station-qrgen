@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'dot_blocks.dart';
-import 'station.dart';
-import 'stations.dart';
+import 'package:magicstationqrgen/dot_blocks.dart';
+import 'package:magicstationqrgen/station.dart';
+import 'package:magicstationqrgen/stations.dart';
 
 class QrScreen extends StatefulWidget {
   final List<BottomNavigationBarItem> bnbItems =
@@ -81,7 +81,7 @@ class _QrScreenState extends State<QrScreen> {
         currentIndex: _currentIndex,
         backgroundColor: Colors.red.shade900,
         selectedItemColor: Colors.white,
-        unselectedItemColor: Color(0x40110022),
+        unselectedItemColor: Color(0x77110022),
         items: widget.bnbItems,
       ),
       floatingActionButton: FloatingActionButton(
