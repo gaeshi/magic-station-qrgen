@@ -25,7 +25,7 @@ class DotBlockWithQrCode extends StatelessWidget {
               child: QrImage(
                 backgroundColor: Colors.yellow,
                 data: _code ?? 'Magic Station QR',
-                version: QrVersions.auto,
+                errorCorrectionLevel: QrErrorCorrectLevel.H,
               ),
             ),
           ),
@@ -47,13 +47,7 @@ class DotBlock extends StatelessWidget {
       padding: EdgeInsets.all(16),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          DotRow(),
-          DotRow(),
-          DotRow(),
-          DotRow(),
-          DotRow(),
-        ],
+        children: <Widget>[...List.filled(5, DotRow())],
       ),
     );
   }
@@ -68,13 +62,7 @@ class DotRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Dot(),
-        Dot(),
-        Dot(),
-        Dot(),
-        Dot(),
-      ],
+      children: <Widget>[...List.filled(5, Dot())],
     );
   }
 }
@@ -82,19 +70,20 @@ class DotRow extends StatelessWidget {
 class Dot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Stack(
       alignment: Alignment.center,
       children: <Widget>[
         Container(
-          width: MediaQuery.of(context).size.width * 0.08,
-          height: MediaQuery.of(context).size.width * 0.08,
+          width: screenWidth * 0.08,
+          height: screenWidth * 0.08,
           decoration: BoxDecoration(
             color: Colors.yellow.shade600,
           ),
         ),
         Container(
-          width: MediaQuery.of(context).size.width * 0.07,
-          height: MediaQuery.of(context).size.width * 0.07,
+          width: screenWidth * 0.07,
+          height: screenWidth * 0.07,
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
@@ -108,8 +97,8 @@ class Dot extends StatelessWidget {
           ),
         ),
         Container(
-          width: MediaQuery.of(context).size.width * 0.045,
-          height: MediaQuery.of(context).size.width * 0.045,
+          width: screenWidth * 0.045,
+          height: screenWidth * 0.045,
           decoration: BoxDecoration(
             color: Colors.yellow.shade500,
             shape: BoxShape.circle,
